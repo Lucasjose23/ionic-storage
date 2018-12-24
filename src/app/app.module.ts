@@ -7,24 +7,36 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+import { IonicStorageModule } from '@ionic/storage';
+import { DatePipe } from '@angular/common';
+import { EditarClientePage } from '../pages/editar-cliente/editar-cliente';
+import { ClienteProvider } from '../providers/cliente/cliente';
+
+
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    EditarClientePage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    EditarClientePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    DatePipe,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ClienteProvider
   ]
 })
 export class AppModule {}
